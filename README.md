@@ -1,6 +1,6 @@
 # iSnap
 
-iSnap, formerly InstaSnap is a photo sharing app for Android devices.
+iSnap, formerly InstaSnap, is a photo sharing app for Android devices.
 
 Users can send each other encrypted pictures that show up on recipient's phone for a few seconds and disappear forever.
 Screenshots are disabled.
