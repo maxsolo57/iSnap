@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.apparitionhq.instasnap"
+    android:installLocation="internalOnly"
+    android:versionCode="15"
+    android:versionName="1.3.4.1 (build_487)" >
+
+    <!-- android:versionName="1.3.3" -->
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <!-- deleted PERMISSIONS -->
+    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
+    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/> -->
+
+
+    <!-- new code to use with AppHance     Permissions required by AppHance -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- end of new code to use with AppHance -->
+
+
+    <!-- REQUIRED PERMISSIONS (for Urban Airship GCM) -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.apparitionhq.instasnap.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.apparitionhq.instasnap.permission.C2D_MESSAGE" />
+    <!-- The two elements above ensure that only this application can receive the messages and registration result -->
+    <!-- END Urban Airship Required Permissions -->
+
+
+    <!-- new code to use with Flurry     Permissions required by Flurry -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.camera" >
+    </uses-feature>
+
+    <application
+        android:name="com.apparitionhq.instasnap.SexPixApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_instasnap"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.InstaSnap_default" >
+        <activity
+            android:name="com.apparitionhq.instasnap.SplashScreen"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_splash_screen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.Home"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.Home" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.Picture"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_picture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apparitionhq.instasnap.Home" />
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.SendPicture"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_send_picture" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apparitionhq.instasnap.Picture" />
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.ShowPicture"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_show_picture" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.ShowPicture" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.SavedPix"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_saved_pix" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.SavedPix" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.ContactPicker"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_contact_picker" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.ContactPicker" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.Registration"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_registration"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.Registration" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.IMEIRequest"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_imeirequest" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.IMEIRequest" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.AccountProblem"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_account_problem" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.AccountProblem" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.UpgradeScreen"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_upgrade_screen" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.UpgradeScreen" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.InfoScreen"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_info_screen" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.InfoScreen" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.ProfileInfo"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_profile_info" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.ProfileInfo" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.Notification"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:label="@string/title_activity_notification" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.Notification" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.apparitionhq.instasnap.GiveLove"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_give_love" >
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.MakeIsYours"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_make_is_yours" >
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.StatusIcons"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_status_icons" >
+        </activity>
+        
+        <activity
+            android:name="com.apparitionhq.instasnap.FAQ"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_faq" >
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.CodePrompt"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_code_prompt" >
+        </activity>
+        <activity
+            android:name="com.apparitionhq.instasnap.Uninstall"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_uninstall" >
+        </activity>
+        <activity android:name="com.apparitionhq.instasnap.SettingsScreen" >
+        </activity>
+        <activity
+            android:name="com.aviary.android.feather.FeatherActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:largeHeap="true"
+            android:screenOrientation="unspecified"
+            android:theme="@style/FeatherDefaultTheme.Custom" />
+        <activity
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <service
+            android:name="com.apparitionhq.instasnap.BgService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.apparitionhq.instasnap.action.NETWORK_CONNECT" />
+                <action android:name="com.apparitionhq.instasnap.action.NETWORK_DISCONNECT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.apparitionhq.instasnap.listeners.StartServiceAtBootReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="StartServiceAtBootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Billing stuff -->
+        <receiver android:name="com.apparitionhq.instasnap.billing.BillingReceiver" >
+            <intent-filter>
+                <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
+                <action android:name="com.android.vending.billing.RESPONSE_CODE" />
+                <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <!-- Billing stuff end -->
+
+
+        <!-- RevMob stuff -->
+        <activity
+            android:name="com.revmob.ads.fullscreen.FullscreenActivity"
+            android:configChanges="keyboardHidden|orientation" >
+        </activity>
+        <!-- RevMob stuff  end -->
+
+
+        <!-- Flurry stuff -->
+        <activity
+            android:name="com.flurry.android.FlurryFullscreenTakeoverActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode"
+            android:hardwareAccelerated="true" >
+        </activity>
+        <!-- Flurry stuff  end -->
+
+
+        <!-- Used for install referral measurement in Google Analytics -->
+        <service android:name="com.google.analytics.tracking.android.CampaignTrackingService" />
+
+        <receiver
+            android:name="com.google.analytics.tracking.android.CampaignTrackingReceiver"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- REQUIRED for Urban Airship GCM -->
+        <receiver android:name="com.apparitionhq.instasnap.listeners.UAshipReceiver" />
+        <receiver android:name="com.urbanairship.CoreReceiver" />
+        <receiver
+            android:name="com.urbanairship.push.GCMPushReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <!-- MODIFICATION REQUIRED - Use your package name as the category -->
+                <category android:name="com.apparitionhq.instasnap" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.urbanairship.push.PushService"
+            android:label="Push Notification Service" />
+        
+      <!--  
+        <service
+            android:name="com.urbanairship.push.PushWorkerService"
+            android:label="Push Notification Worker Service" />
+        -->
+        
+        <service
+            android:name="com.urbanairship.analytics.EventService"
+            android:label="Event Service" />
+
+        <!-- This is required for persisting preferences related to push and location -->
+        <provider
+            android:name="com.urbanairship.UrbanAirshipProvider"
+            android:authorities="com.apparitionhq.instasnap.urbanairship.provider"
+            android:exported="false"
+            android:multiprocess="true" />
+        <!-- END OF REQUIRED ITEMS -->
+
+
+        <!-- Apptentive stuff -->
+        <meta-data
+            android:name="apptentive_api_key"
+            android:value="f134d359ab96ca578659a38755ffe9e95ac21a102aee16847538fda52b6304b3" />
+
+        <activity android:name="com.apptentive.android.sdk.ViewActivity" />
+
+        <receiver android:name="com.apptentive.android.sdk.comm.NetworkStateReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+            </intent-filter>
+        </receiver>
+        <!-- end of Apptentive stuff -->
+        
+        
+        <!-- HockeyApp stuff -->
+        <activity android:name="net.hockeyapp.android.UpdateActivity" />   
+        <!-- end of HockeyApp stuff -->
+
+
+        <!-- Apphance stuff -->
+        <activity
+			android:name="com.apphance.android.ui.ProblemActivity"
+			android:configChanges="orientation"
+			android:launchMode="singleInstance"
+			android:process="com.utest.apphance.reporteditor">
+		</activity>
+
+        <!-- end of Apphance stuff -->
+
+        
+    </application>
+
+</manifest>
